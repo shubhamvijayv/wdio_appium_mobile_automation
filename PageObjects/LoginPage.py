@@ -14,9 +14,11 @@ class Login(BasePage):
     def app_login_success(self, username, password):
         self.element_click(*LoginLocators.LOGIN_BUTTON_TEXT)
         time.sleep(2)
+        self.element_click(*LoginLocators.USERNAME_AREA)
         self.send_key(username, *LoginLocators.USERNAME_AREA)
         self.send_key(password, *LoginLocators.PASSWORD_AREA)
-        self.element_click(*LoginLocators.LOGIN_BUTTON)
+        self.driver.press_keycode(66)
+        self.driver.press_keycode(66)
         time.sleep(2)
         assert self.is_element_displayed(*LoginLocators.SUCCESS_MESSAGE)
         
