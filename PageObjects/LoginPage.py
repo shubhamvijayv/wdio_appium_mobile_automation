@@ -17,8 +17,8 @@ class Login(BasePage):
         self.element_click(*LoginLocators.USERNAME_AREA)
         self.send_key(username, *LoginLocators.USERNAME_AREA)
         self.send_key(password, *LoginLocators.PASSWORD_AREA)
-        self.driver.press_keycode(66)
-        self.driver.press_keycode(66)
+        self.key_code(66)
+        self.key_code(66)
         time.sleep(2)
         assert self.is_element_displayed(*LoginLocators.SUCCESS_MESSAGE)
         

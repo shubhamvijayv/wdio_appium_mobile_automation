@@ -181,3 +181,17 @@ __given below command install requirenments.txt file in env environment:__
             pytest tests/test_login.py -s -v --device android --device_name ready_to_use --alluredir=./allure-results
 
             pytest tests/test_signup.py -s -v --device android --device_name ready_to_use --alluredir=./allure-results
+
+**29. Always check adb devices name using terminal given below which command**
+
+            adb devices
+
+__And always send device_name through terminal__
+***where adb devices command always gives output given below like that***
+
+            emulator-5556
+
+***this is a device_name. and send device_name through command line and activate same device given device name***
+***the command is given below which is good for execution our test suite.***
+
+            pytest tests/test_login.py -s -v --device android --device_name emulator-5556 --alluredir=./allure-results

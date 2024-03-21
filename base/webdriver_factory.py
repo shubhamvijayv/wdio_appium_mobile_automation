@@ -29,6 +29,7 @@ class WebDriverFactory:
                 "platformName": "Android",
                 "appium:platformVersion": "13.0",
                 "appium:deviceName": self.device_name,
+                "appium:udid":self.device_name,
                 "appium:App": "/Android-NativeDemoApp-0.4.0.apk",
                 "appium:appPackage": "com.wdiodemoapp",
                 "appium:appActivity": "com.wdiodemoapp.MainActivity",
@@ -48,3 +49,14 @@ class WebDriverFactory:
                 'automationName': 'XCUITest',
                 'bundleId': 'com.example.apple-samplecode.UICatalog'
             })
+
+    def get_emulator_size(self, driver):
+        try:
+            size = driver.get_window_size()
+            width = size['width']
+            height = size['height']
+            print(f"Emulator Size (Width x Height): {width} x {height}")
+            return width, height
+        except Exception as e:
+            print(f"Error occurred while getting emulator size: {str(e)}")
+            return None, None

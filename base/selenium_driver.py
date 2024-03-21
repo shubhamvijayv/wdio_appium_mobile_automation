@@ -238,3 +238,28 @@ class BasePage():
             self.log.info("Swipe performed from ({}, {}) to ({}, {})".format(start_x, start_y, end_x, end_y))
         else:
             self.log.error("Not present coordinates")
+        return element
+
+    def switch_app(self, app_credientials):
+        self.driver.execute_script('mobile: startActivity', {'intent': app_credientials})
+        time.sleep(2)
+
+    def key_code(self, value):
+        self.driver.press_keycode(value)
+
+    def scroll(self, by, direction):
+        if direction == 'down':
+            self.driver.find_element(by, 'new UiScrollable(new UiSelector().scrollable(true)).setAsVerticalList().scrollToEnd(5)')
+            self.log.info("scroll down using" + by)
+
+        elif direction == 'up':
+            self.driver.find_element(by, 'new UiScrollable(new UiSelector().scrollable(true)).setAsVerticalList().scrollToBeginning(5)')
+            self.log.info("scroll up using" + by)
+
+        elif direction == 'right':
+            self.driver.find_element(by, 'new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollToEnd(5)')
+            self.log.info("scroll right using" + by)
+
+        elif direction == 'left':
+            self.driver.find_element(by, 'new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollToBeginning(5)') 
+            self.log.info("scroll left using " + by)
